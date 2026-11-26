@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+    --font-display: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        background-color: #080b18;
+        color: #ffffff;
+        font-family: var(--font-sans);
+    }
+
+    body {
+        overflow-x: hidden;
+        background-color: #080b18;
+        color: #ffffff;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        letter-spacing: -0.02em;
+    }
+}
+
+/* Keep section titles clear of the fixed navbar when jumping to anchors. */
+section[id] {
+    scroll-margin-top: 72px;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid #00d9ff;
+    outline-offset: 3px;
+}
+
+/* Scroll-reveal: sections fade up once they enter the viewport. */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080b18;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3563ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
